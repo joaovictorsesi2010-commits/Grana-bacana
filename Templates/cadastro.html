@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Grana bacana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+</head>
+<body>
+    <header>
+        <img class="logo" src="static/uploads/logo.png" alt="Logo Grana Bacana">
+    </header>
+    <main>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash">
+                    {%  for category, message in messages %}
+                        <div class="flash {{ category }}">{{  message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <h2>Cadastro</h2>
+
+        <form action="{{ url_for('pagina_cadastro') }}" method="POST">
+
+        <img src="">
+        <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
+
+        <img src="">
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+
+        <img src="">
+        <input type="password" id="senha" name="senha" placeholder="Senha" required>
+
+        <img src="">
+        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" required>
+
+        <div class="segunda_parte">
+            <img src="">
+            <input type="number" id="Vdiaria" name="Vdiaria" placeholder="Valor da diária" required>
+
+            <img src="">
+            <input type="number" id="minPacotes" name="minPacotes" placeholder="Minímo de pacotes para adicional" required>
+
+            <img src="">
+            <input type="number" id="adicional" name="adicional" placeholder="Valor adicional" required>
+        </div>
+
+        <button type="submit">Salvar</button>
+
+        </form>
+    </main>
+
+</body>
+</html>
+
+
+
+
+
+
