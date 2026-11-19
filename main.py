@@ -83,6 +83,7 @@ def pagina_cadastro():
                 --Define os valores que serão inseridos em cada coluna.
                 --Cada ? representa um valor que será enviado.
                 VALUES (?, ?, ?, ?, ?, ?, ?)
+                --Envia os valores na mesma ordem das colunas acima
             """, (nome, email, senha_hash, 1, Vdiaria, adicional, minPacotes))
 
             #Confirma e salva as alterações no banco de dados.
