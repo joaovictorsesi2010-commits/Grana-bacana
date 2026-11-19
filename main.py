@@ -71,6 +71,7 @@ def pagina_cadastro():
                 #url_for cria o caminho para uma função.
                 return redirect(url_for('pagina_cadastro'))
 
+            #Criptografa a senha
             senha_hash = generate_password_hash(senha)
 
             #Executa um comando para inserir um novo usuário no banco.
