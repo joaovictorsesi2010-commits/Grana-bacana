@@ -1,64 +1,121 @@
+<!--Indica que o documento utiliza HTML5.-->
 <!DOCTYPE html>
+<!--Define o idioma da página como português do Brasil e a direção do texto como esquerda para direita.-->
 <html lang="pt-br" dir="ltr">
+
+<!--Inicia a área de configurações da página.-->
 <head>
+    <!--Permite utilizar caracteres especiais, como ç e acentos.-->
     <meta charset="UTF-8">
+    <!--Adapta a página ao tamanho da tela do dispositivo.-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Define o título que aparece na aba do navegador.-->
     <title>Cadastro - Grana bacana</title>
+    <!--Conecta o arquivo CSS responsável pela aparência da página.-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
 </head>
-<body>
-    <header>
-        <img class="logo" src="static/uploads/logo.png" alt="Logo Grana Bacana">
-    </header>
-    <main>
 
+<!--Inicia o conteúdo visível da página.-->
+<body>
+    <!--Cria a área principal que envolve o cadastro.-->
+    <main>
+        <!--Cabeçalho utilizado para posicionar a logo.-->
+        <header>
+            <!--Adiciona a imagem da logo do Grana Bacana.-->
+            <img class="logo" src="static/uploads/logo.png" alt="Logo Grana Bacana">
+        </header>
+
+        <!--Exibe o título principal da página.-->
+        <h2>Cadastro</h2>
+        <!--Exibe um pequeno texto abaixo do título.-->
+        <p class="subtitulo">Acesse sua conta</p>
+
+        <!--Busca as mensagens temporárias enviadas pelo Flask, incluindo suas categorias.-->
         {% with messages = get_flashed_messages(with_categories=true) %}
+            <!--Verifica se existe alguma mensagem para exibir.-->
             {% if messages %}
+                <!--Cria uma área para organizar as mensagens.-->
                 <div class="flash">
-                    {%  for category, message in messages %}
-                        <div class="flash {{ category }}">{{  message }}</div>
+                    <!--Percorre todas as mensagens recebidas e suas respectivas categorias.-->
+                    {% for category, message in messages %}
+                        <!--Exibe a mensagem e utiliza sua categoria como classe CSS.-->
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    <!--Encerra o laço de repetição.-->
                     {% endfor %}
                 </div>
+            <!--Encerra a condição que verifica a existência de mensagens.-->
             {% endif %}
+        <!--Encerra o bloco de recebimento das mensagens.-->
         {% endwith %}
 
-        <h2>Cadastro</h2>
-
+        <!--Cria o formulário e define para onde e como os dados serão enviados.-->
         <form action="{{ url_for('pagina_cadastro') }}" method="POST">
+            <!--Agrupa o ícone e o campo de nome completo.-->
+            <div class="campo">
+                <!--Reserva o espaço onde será colocado o ícone do campo.-->
+                <img src="static/uploads/Icone-de-pessoa.png" alt="">
+                <!--Cria um campo de texto para o nome completo, que será obrigatório.-->
+                <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
+            </div>
 
-        <img src="">
-        <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
+            <!--Agrupa o ícone e o campo de e-mail.-->
+            <div class="campo">
+                <!--Reserva o espaço onde será colocado o ícone do campo.-->
+                <img src="static/uploads/Icone-de-email.png" alt="">
+                <!--Cria um campo para o e-mail e verifica se o formato informado é válido.-->
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+            </div>
 
-        <img src="">
-        <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <!--Agrupa o ícone e o campo de senha.-->
+            <div class="campo">
+                <!--Reserva o espaço onde será colocado o ícone do campo.-->
+                <img src="static/uploads/Icone-de-cadeado.png" alt="">
+                <!--Cria um campo de senha, ocultando os caracteres digitados.-->
+                <input type="password" id="senha" name="senha" placeholder="Senha" required>
+            </div>
 
-        <img src="">
-        <input type="password" id="senha" name="senha" placeholder="Senha" required>
+            <!--Agrupa o ícone e o campo de confirmação de senha.-->
+            <div class="campo">
+                <!--Reserva o espaço onde será colocado o ícone do campo.-->
+                <img src="static/uploads/Icone-de-cadeado.png" alt="">
+                <!--Cria um campo para o usuário confirmar a senha digitada.-->
+                <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" required>
+            </div>
 
-        <img src="">
-        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" required>
+            <!--Agrupa os campos relacionados aos valores adicionais.-->
+            <div class="segunda_parte">
+                <!--Agrupa o ícone e o campo de valor da diária.-->
+                <div class="campo">
+                    <!--Reserva o espaço onde será colocado o ícone do campo.-->
+                    <img src="static/uploads/Icone-de-moedas.png" alt="">
+                    <!--Cria um campo numérico para informar o valor da diária.-->
+                    <input type="number" id="Vdiaria" name="Vdiaria" placeholder="Valor da diária" required>
+                </div>
 
-        <div class="segunda_parte">
-            <img src="">
-            <input type="number" id="Vdiaria" name="Vdiaria" placeholder="Valor da diária" required>
+                <!--Agrupa o ícone e o campo de quantidade mínima de pacotes.-->
+                <div class="campo">
+                    <!--Reserva o espaço onde será colocado o ícone do campo.-->
+                    <img src="static/uploads/Icone-de-caixa.png" alt="">
+                    <!--Cria um campo numérico para informar a quantidade mínima de pacotes para receber adicional.-->
+                    <input type="number" id="minPacotes" name="minPacotes" placeholder="Mínimo de pacotes para adicional" required>
+                </div>
 
-            <img src="">
-            <input type="number" id="minPacotes" name="minPacotes" placeholder="Minímo de pacotes para adicional" required>
-
-            <img src="">
-            <input type="number" id="adicional" name="adicional" placeholder="Valor adicional" required>
-        </div>
-
-        <button type="submit">Salvar</button>
-
+                <!--Agrupa o ícone e o campo de valor adicional.-->
+                <div class="campo">
+                    <!--Reserva o espaço onde será colocado o ícone do campo.-->
+                    <img src="static/uploads/Icone-de-moedas.png" alt="">
+                    <!--Cria um campo numérico para informar o valor adicional.-->
+                    <input type="number" id="adicional" name="adicional" placeholder="Valor adicional" required>
+                </div>
+            <!--Encerra a área dos campos adicionais.-->
+            </div>
+            <!--Cria o botão que envia as informações preenchidas no formulário.-->
+            <button type="submit">Cadastrar</button>
+        <!--Encerra o formulário.-->
         </form>
+    <!--Encerra a área principal de cadastro.-->
     </main>
-
+<!--Encerra o conteúdo da página.-->
 </body>
+<!--Encerra o documento HTML.-->
 </html>
-
-
-
-
-
-
