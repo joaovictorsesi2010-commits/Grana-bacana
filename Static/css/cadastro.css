@@ -1,47 +1,216 @@
+/*Importa a fonte utilizada no site.*/
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
+
+/*Guarda as cores do site em variáveis para facilitar alterações.*/
+:root {
+    /*Azul marinho mais escuro.*/
+    --azul-escuro: #0B1F3B;
+    /*Azul marinho principal.*/
+    --azul-marinho: #123A63;
+    /*Azul médio.*/
+    --azul-medio: #2F5D8C;
+    /*Azul claro.*/
+    --azul-claro: #C9D6E5;
+    /*Azul bebê usado no fundo.*/
+    --azul-bebe: #F0FBFF;
+}
+
+/*Configura a fonte padrão da página.*/
 html {
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+    /*Define a fonte principal e as alternativas.*/
     font-family: "Plus Jakarta Sans", Arial, sans-serif;
 }
 
-.logo {
-    width: 300px;
-    height: 300px;
-    flex-shrink: 1;
-}
-
+/*Configura o fundo e o posicionamento geral da página.*/
 body {
+    /*Remove as margens padrão do navegador.*/
     margin: 0;
-    background-image: url("../Uploads/background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /*Faz o corpo ocupar pelo menos a altura da tela.*/
     min-height: 100vh;
+    /*Adiciona a imagem de fundo.*/
+    background-image: url("../Uploads/background.png");
+    /*Faz a imagem ocupar todo o espaço disponível.*/
+    background-size: cover;
+    /*Centraliza a imagem de fundo.*/
+    background-position: center;
+    /*Impede que a imagem se repita.*/
+    background-repeat: no-repeat;
+    /*Ativa o Flexbox para organizar os elementos.*/
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    /*Centraliza o painel na horizontal.*/
+    justify-content: center;
 }
 
+/*Configura o painel principal de cadastro.*/
 main {
+    /*Define a largura do painel.*/
+    width: 50%;
+    /*Limita sua largura a 360 pixels.*/
+    max-width: 360px;
+    /*Faz o painel ocupar pelo menos a altura da tela.*/
+    min-height: 100vh;
+    /*Adiciona espaço interno de 15px em cima e embaixo e 20px nas laterais.*/
+    padding: 15px 20px;
+    /*Inclui o padding no cálculo do tamanho do painel.*/
+    box-sizing: border-box;
+    /*Define o fundo com a cor azul bebê.*/
+    background-color: var(--azul-bebe);
+}
+
+/*Centraliza a logo dentro do cabeçalho.*/
+header {
+    /*Ativa o Flexbox.*/
+    display: flex;
+    /*Centraliza a logo horizontalmente.*/
+    justify-content: center;
+    /*Adiciona 5 pixels de espaço abaixo do cabeçalho.*/
+    margin-bottom: 5px;
+}
+
+/*Define o tamanho e o ajuste da logo.*/
+.logo {
+    /*Define a largura da imagem.*/
+    width: 260px;
+    /*Define a altura da imagem.*/
+    height: 130px;
+    /*Mantém a proporção original da imagem.*/
+    object-fit: contain;
+}
+
+/*Configura o título Cadastro.*/
+h2 {
+    /*Centraliza o texto.*/
+    text-align: center;
+    /*Define a cor do título.*/
+    color: var(--azul-marinho);
+    /*Define o tamanho da letra.*/
+    font-size: 18px;
+    /*Remove as margens padrão do título.*/
+    margin: 0;
+}
+
+/*Configura o texto abaixo do título.*/
+.subtitulo {
+    /*Centraliza o texto.*/
+    text-align: center;
+    /*Define a cor do subtítulo.*/
+    color: #8999A8;
+    /*Define o tamanho da letra.*/
+    font-size: 9px;
+    /*Adiciona espaço acima e abaixo do texto.*/
+    margin: 2px 0 25px;
+}
+
+/*Organiza os campos do formulário.*/
+form {
+    /*Ativa o Flexbox.*/
+    display: flex;
+    /*Coloca os campos um abaixo do outro.*/
+    flex-direction: column;
+    /*Define 12 pixels de espaço entre os elementos.*/
+    gap: 12px;
+}
+
+/*Configura as caixas dos campos de preenchimento.*/
+.campo {
+    /*Faz a caixa ocupar toda a largura disponível.*/
     width: 100%;
-    max-width: 350px;
+    /*Define a altura da caixa.*/
+    height: 34px;
+    /*Ativa o Flexbox para organizar o ícone e o input.*/
+    display: flex;
+    /*Alinha os elementos verticalmente ao centro.*/
+    align-items: center;
+    /*Adiciona uma borda cinza clara de 1 pixel.*/
+    border: 1px solid #D5DDE3;
+    /*Arredonda os cantos da caixa.*/
+    border-radius: 6px;
+    /*Define a cor de fundo da caixa.*/
+    background-color: var(--azul-bebe);
+    /*Adiciona espaço interno nas laterais.*/
+    padding: 0 7px;
+    /*Inclui o padding e a borda no tamanho da caixa.*/
     box-sizing: border-box;
 }
 
-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+/*Define o tamanho e o posicionamento dos ícones.*/
+.campo img {
+    /*Define a largura do ícone.*/
+    width: 14px;
+    /*Define a altura do ícone.*/
+    height: 14px;
+    /*Mantém a proporção original da imagem.*/
+    object-fit: contain;
+    /*Adiciona espaço à direita do ícone.*/
+    margin-right: 7px;
 }
 
+/*Configura os campos onde o usuário digita.*/
+input {
+    /*Faz o input ocupar o espaço disponível.*/
+    width: 100%;
+    /*Permite que o input diminua quando necessário.*/
+    min-width: 0;
+    /*Remove a borda padrão.*/
+    border: none;
+    /*Remove o contorno ao selecionar o campo.*/
+    outline: none;
+    /*Deixa o fundo transparente.*/
+    background: transparent;
+    /*Define a fonte do texto.*/
+    font-family: "Plus Jakarta Sans", Arial, sans-serif;
+    /*Define o tamanho da letra.*/
+    font-size: 9px;
+    /*Define a cor do texto digitado.*/
+    color: var(--azul-escuro);
+}
+
+/*Configura o texto de orientação dentro dos inputs.*/
+input::placeholder {
+    /*Define a cor do texto de orientação.*/
+    color: #8999A8;
+}
+
+/*Organiza os campos de valores adicionais.*/
 .segunda_parte {
-    margin-top: 25px;
-    width: 100%;
+    /*Adiciona espaço acima dos campos.*/
+    margin-top: 20px;
+    /*Ativa o Flexbox.*/
     display: flex;
+    /*Coloca os campos um abaixo do outro.*/
     flex-direction: column;
-    gap: 18px;
+    /*Define o espaço entre os campos.*/
+    gap: 12px;
 }
 
+/*Configura o botão de cadastro.*/
+button {
+    /*Define a largura do botão.*/
+    width: 80%;
+    /*Define a altura do botão.*/
+    height: 34px;
+    /*Centraliza o botão horizontalmente.*/
+    align-self: center;
+    /*Adiciona espaço acima do botão.*/
+    margin-top: 8px;
+    /*Remove a borda padrão.*/
+    border: none;
+    /*Arredonda os cantos do botão.*/
+    border-radius: 5px;
+    /*Define o fundo azul marinho.*/
+    background-color: var(--azul-marinho);
+    /*Define a cor do texto como branco.*/
+    color: white;
+    /*Define a fonte do botão.*/
+    font-family: "Plus Jakarta Sans", Arial, sans-serif;
+    /*Define o tamanho da letra.*/
+    font-size: 10px;
+    /*Mostra o cursor de mão ao passar pelo botão.*/
+    cursor: pointer;
+}
 
-
-
+/*Altera a cor do botão quando o mouse passa sobre ele.*/
+button:hover {
+    /*Muda o fundo para azul médio.*/
+    background-color: var(--azul-medio);
+}
