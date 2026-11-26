@@ -93,7 +93,6 @@ def pagina_cadastro():
             flash('Cadastro realizado com sucesso', 'success')
 
             #Guarda algumas informações do usuário na sessão.
-            #A senha não é armazenada na sessão por segurança.
             session['informacoes'] = {
                 'nome': nome,
                 'email': email
